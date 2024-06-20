@@ -1,10 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
 
 # testing
 /coverage
@@ -15,15 +10,6 @@
 
 # production
 /build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # local env files
 .env
@@ -38,3 +24,15 @@ next-env.d.ts
 
 # editor
 /.vscode
+
+# another directories and files
+/public
+package-lock.json
+package.json
+tsconfig.json
+.eslintrc.json
+.prettierrc.json
+.eslintignore
+next.config.mjs
+README.md
+
