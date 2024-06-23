@@ -1,0 +1,34 @@
+@import '../styles/mixins.scss';
+@import '../styles/variables.scss';
+
+.wrapper {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto 0;
+  text-align: center;
+
+  @media (max-width: 576px) {
+    max-width: 100%;
+    margin-top: 16px;
+  }
+
+  .title {
+    @include font($fs-24, $lh-28, $fw-700);
+    color: $black-lighten-20;
+  }
+
+  .description {
+    margin-top: 20px;
+    @include font($fs-16, $lh-25, $fw-400);
+    color: $black-lighten-20;
+    @media (max-width: 576px) {
+      margin-top: 16px;
+    }
+  }
+
+  .link {
+    @include button($black-lighten-20, $slate-lighten-70, $black-lighten-20, $grey-lighten-80);
+    margin-top: 20px;
+    text-decoration: none;
+  }
+}

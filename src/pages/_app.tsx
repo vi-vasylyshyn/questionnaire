@@ -1,6 +1,9 @@
 import type { AppProps } from 'next/app'
 import { Open_Sans } from 'next/font/google'
 import Head from 'next/head'
+import { Provider } from 'react-redux'
+
+import { store } from '@/store'
 
 import '@/styles/globals.css'
 
@@ -43,9 +46,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel="icon" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <main className={openSansFont.className}>
-        <Component {...pageProps} />
-      </main>
+      <div className={openSansFont.className}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </div>
     </>
   )
 }

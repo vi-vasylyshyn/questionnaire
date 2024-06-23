@@ -1,0 +1,32 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.questionBlock {
+  width: 100%;
+  max-width: 330px;
+  margin: 20px auto 0;
+
+  @media (max-width: 576px) {
+    max-width: 100%;
+    margin-top: 16px;
+  }
+
+  svg {
+    filter: brightness(0) invert(1);
+  }
+
+  .title {
+    @include font($fs-24, $lh-28, $fw-700);
+    color: $black-lighten-20;
+  }
+
+  .description {
+    margin-top: 20px;
+    @include font($fs-18, $lh-28, $fw-700);
+    color: $black-lighten-20;
+  }
+
+  .inputs {
+    margin-top: 30px;
+  }
+}
