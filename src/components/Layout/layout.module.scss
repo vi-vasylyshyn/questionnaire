@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+
+.layout {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 60px;
+
+  @media (max-width: 576px) {
+    padding: 0 15px 60px;
+  }
+}
+
+.purpleTheme {
+  background: $accent-base;
+
+  svg {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.pinkTheme {
+  background-color: $main-color;
+}
