@@ -1,0 +1,43 @@
+/***** colors *****/
+$main-color: #fff0f0;
+$black-base: #000000;
+$black-lighten-20: #201f1f;
+$grey-base: #333333;
+$grey-lighten-50: #d8d6d640;
+$grey-lighten-70: #e0e0e0;
+$grey-lighten-75: #e6e6e6;
+$grey-lighten-80: #fafafa;
+$grey-lighten-90: #fbfbff;
+$slate-lighten-70: #eaeef7;
+$violet-base: #543c97;
+$violet-lighten-60: #543c9740;
+$purple-base: #6939a2;
+$purple-lighten-10: #6a3aa2;
+$indigo-base: #141333;
+$indigo-lighten-30: #202261;
+$accent-base: linear-gradient(
+  $indigo-base -33.39%,
+  $indigo-lighten-30 15.89%,
+  $violet-base 55.84%,
+  $purple-base 74.96%
+);
+
+/***** fonts *****/
+/* font-size */
+$fs-14: 14px;
+$fs-16: 16px;
+$fs-18: 18px;
+$fs-24: 24px;
+
+/* line-height */
+$lh-19: 19px;
+$lh-21: 21px;
+$lh-25: 25px;
+$lh-28: 28px;
+
+/* font-weight */
+$fw-400: 400;
+$fw-700: 700;
+
+/***** border *****/
+$br-16: 16px;
