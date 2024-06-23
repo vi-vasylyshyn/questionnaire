@@ -58,6 +58,12 @@ export const surveyHistorySlice = createSlice({
       state.reverseHistory = reverseHistory
       surveyReverseHistoryStorage.set(reverseHistory)
     },
+    removeReverseHistoryItem: (state: InitialState, action: PayloadAction<string>) => {
+      const updatedReverseHistory = state.reverseHistory.filter(historyItem => historyItem !== action.payload)
+      console.log(updatedReverseHistory)
+      state.reverseHistory = updatedReverseHistory
+      surveyReverseHistoryStorage.set(updatedReverseHistory)
+    },
     clearReverseHistory: (state: InitialState) => {
       state.reverseHistory = []
       surveyReverseHistoryStorage.remove()
@@ -72,19 +78,14 @@ export const surveyHistorySlice = createSlice({
 export const {
   setHistoryItem,
   setReverseHistoryItem,
+  removeReverseHistoryItem,
   removeHistoryItemsAfterBranching,
   clearReverseHistory,
   clearHistory,
 } = surveyHistorySlice.actions
 
-export const getIsHistoryFilledSelector = (state: RootState) => !!Object.keys(state.survey.history).length
+export const getIsHistoryEmptySelector = (state: RootState) => !Object.keys(state.survey.history).length
 export const getHistorySelector = (state: RootState) => state.survey.history
 export const getReverseHistorySelector = (state: RootState) => state.survey.reverseHistory
-export const getLastResponseSelector = (state: RootState) => {
-  const isHistoryFilled = Object.keys(state.survey.history).length
-  const responsesForQuestions =
-    isHistoryFilled && Object.entries(state.survey.history).filter(([, response]) => response.stepKey === 'question')
-  return responsesForQuestions ? responsesForQuestions[responsesForQuestions.length - 1] : null
-}
 
 export default surveyHistorySlice.reducer

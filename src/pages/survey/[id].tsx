@@ -9,10 +9,11 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import {
   clearReverseHistory,
   getHistorySelector,
-  getLastResponseSelector,
+  getIsHistoryEmptySelector,
   getReverseHistorySelector,
   type History,
   removeHistoryItemsAfterBranching,
+  removeReverseHistoryItem,
   setHistoryItem,
   setReverseHistoryItem,
 } from '@/store/surveyHistorySlice'
@@ -31,8 +32,8 @@ const isQuestionStep = (step: InfoStepProps | QuestionStepProps): step is Questi
 const StepPage = ({ step }: StepPageProps) => {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const lastResponse = useAppSelector(getLastResponseSelector)
   const history = useAppSelector(getHistorySelector)
+  const isHistoryEmpty = useAppSelector(getIsHistoryEmptySelector)
   const reverseHistory = useAppSelector(getReverseHistorySelector)
 
   const formattedQuestionStep = useMemo(() => {
@@ -64,13 +65,18 @@ const StepPage = ({ step }: StepPageProps) => {
       hasBranches: boolean,
       response: string | null,
     ) => {
-      let nextStep = nextStepId
-      if (Array.isArray(nextStepId) && lastResponse) {
-        nextStep = findNextStep(lastResponse, questionsConfig) || ''
+      let nextStep = nextStepId as string
+      if (Array.isArray(nextStepId)) {
+        nextStep = findNextStep(stepId, history, questionsConfig) || ''
       }
-      if (reverseHistory.length && shouldUpdateHistory(step.id, response, history)) {
+
+      if (!!reverseHistory.length && shouldUpdateHistory(step.id, response, history)) {
         dispatch(removeHistoryItemsAfterBranching())
         dispatch(clearReverseHistory())
+      }
+
+      if (!!reverseHistory.length && reverseHistory.includes(nextStep)) {
+        dispatch(removeReverseHistoryItem(nextStep))
       }
 
       if (stepId) {
@@ -79,13 +85,13 @@ const StepPage = ({ step }: StepPageProps) => {
             stepKey,
             stepId,
             hasBranches,
-            parentId: lastResponse ? stepId : null,
+            parentId: !isHistoryEmpty ? stepId : null,
             response: response!,
           }),
         )
         dispatch(
           setHistoryItem({
-            stepId: nextStep as string,
+            stepId: nextStep,
             parentId: stepId,
           }),
         )
@@ -98,7 +104,7 @@ const StepPage = ({ step }: StepPageProps) => {
 
       router.push({ pathname: `/survey/${nextStep}` })
     },
-    [dispatch, history, lastResponse, reverseHistory.length, router, shouldUpdateHistory, step.id],
+    [dispatch, history, isHistoryEmpty, reverseHistory, router, shouldUpdateHistory, step.id],
   )
 
   return (
