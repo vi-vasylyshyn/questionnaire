@@ -1,15 +1,30 @@
-## Getting Started
+# Questionnaire
+This project involves creating a responsive questionnaire application using Next.js. The application will feature individual screens for each question, dynamic navigation based on user responses, branches and expressions.
 
-First, run the development server:
+## Required
+* Node.js 18.17 or later
 
+## Installation and running
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone git@github.com:vi-vasylyshyn/questionnaire.git
+```
+### 2. Navigate to the project directory:
+```bash
+cd questionnaire
+```
+### 3. Install the dependencies:
+```bash
+npm install
+```
+### 4. Finally start project:
+Development mode:
+```bash
+npm run start:dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production mode:
+```bash
+npm run start:prod
+```
