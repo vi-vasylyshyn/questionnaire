@@ -60,7 +60,6 @@ export const surveyHistorySlice = createSlice({
     },
     removeReverseHistoryItem: (state: InitialState, action: PayloadAction<string>) => {
       const updatedReverseHistory = state.reverseHistory.filter(historyItem => historyItem !== action.payload)
-      console.log(updatedReverseHistory)
       state.reverseHistory = updatedReverseHistory
       surveyReverseHistoryStorage.set(updatedReverseHistory)
     },

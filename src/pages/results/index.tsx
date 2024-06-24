@@ -23,7 +23,7 @@ const Results = () => {
   }
 
   if (!responses) {
-    return <h2 className="result-placeholder"> You haven&#39;t finish it yet</h2>
+    return <h1 className={styles.placeholder}> You haven&#39;t finish it yet</h1>
   }
 
   return (

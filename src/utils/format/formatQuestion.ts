@@ -19,7 +19,7 @@ export const formatQuestion = (
 
     const replacedText = expression.replacedText
       ? expression.replacedText[responseId]
-      : relatedQuestion?.options.find(option => option.id === responseId)?.text || ''
+      : relatedQuestion?.options.find(option => option.id === responseId)?.text || expression.regex
     const transformedText = expression.capilalize ? toCapitalize(replacedText) : replacedText?.toLowerCase()
     formattedText = formattedText.replace(regexp, transformedText)
   })

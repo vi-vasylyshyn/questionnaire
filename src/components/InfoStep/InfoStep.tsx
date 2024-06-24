@@ -14,7 +14,7 @@ const InfoStep: React.FC<StepProps<InfoStepProps>> = ({ step, onNextStep, onPrev
     <Layout theme="purple">
       <Header onPrevStep={onPrevStep} />
       <div className={styles.infoBlock}>
-        <h2 className={styles.title}>{title}</h2>
+        <h1 className={styles.title}>{title}</h1>
         <p className={styles.description}>{description}</p>
         <button className={styles.link} onClick={() => onNextStep(key, id, nextStepId, hasBranches, null)}>
           {btnText}

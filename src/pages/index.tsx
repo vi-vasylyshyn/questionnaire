@@ -10,7 +10,7 @@ const Home = () => {
     <Layout theme="pink">
       <Header />
       <div className={styles.wrapper}>
-        <h2 className={styles.title}>Questionnaire</h2>
+        <h1 className={styles.title}>Questionnaire</h1>
         <p className={styles.description}>
           Discover more about your relationship with our comprehensive questionnaire designed to deepen your
           understanding and connection.

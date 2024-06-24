@@ -32,4 +32,9 @@
     @include button($black-lighten-20, $slate-lighten-70, $black-lighten-20, $grey-lighten-80);
     margin-top: 30px;
   }
+
+  .placeholder {
+    margin-top: 20px;
+    text-align: center;
+  }
 }
