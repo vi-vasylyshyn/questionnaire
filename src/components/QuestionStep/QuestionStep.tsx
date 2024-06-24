@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 import { questionInputs } from '@/constants/inputs'
 import { useAppSelector } from '@/store'
@@ -17,9 +17,13 @@ const QuestionStep: React.FC<StepProps<QuestionStepProps>> = ({ step, onNextStep
 
   const inputValue = useMemo(() => (history[id]?.response ? history[id].response : ''), [history, id])
 
-  const handleNextStep = (result: string, nextStepId: string) => {
-    onNextStep(key, id, nextStepId, hasBranches, result)
-  }
+  const handleNextStep = useCallback(
+    (result: string, nextStepId: string) => {
+      onNextStep(key, id, nextStepId, hasBranches, result)
+    },
+    [hasBranches, id, key, onNextStep],
+  )
+
   return (
     <Layout theme="pink">
       <Header onPrevStep={onPrevStep} />

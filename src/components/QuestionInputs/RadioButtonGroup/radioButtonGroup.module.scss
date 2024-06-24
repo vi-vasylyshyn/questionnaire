@@ -27,15 +27,6 @@
     z-index: 1;
     cursor: pointer;
 
-    &:hover {
-      background: $grey-lighten-90;
-    }
-  }
-
-  .active {
-    width: 100%;
-    min-height: 64px;
-    color: $grey-lighten-90;
     &::before {
       position: absolute;
       content: '';
@@ -46,6 +37,22 @@
       background: $accent-base;
       border-radius: $br-16;
       z-index: -1;
+      transition: opacity 0.2s linear;
+      opacity: 0;
     }
+
+    &:hover {
+      color: $grey-lighten-90;
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .active {
+    width: 100%;
+    min-height: 64px;
+    color: $grey-lighten-90;
+    background: $accent-base;
   }
 }
