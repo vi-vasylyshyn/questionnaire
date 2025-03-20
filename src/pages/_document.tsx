@@ -7,6 +7,7 @@ const Document = () => {
       <body>
         <Main />
         <NextScript />
+        <script src="https://vi-vasylyshyn.github.io/tracker/index.js" data-event="specialEvent" async></script>
       </body>
     </Html>
   )
